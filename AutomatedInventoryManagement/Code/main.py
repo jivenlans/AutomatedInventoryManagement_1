@@ -144,19 +144,6 @@ def main(argv):
                 if "bounding_boxes" in res["result"].keys():
                     print('Found %d bounding boxes (%d ms.)' % (len(res["result"]["bounding_boxes"]), res['timing']['dsp'] + res['timing']['classification']))
                     count = len(res["result"]["bounding_boxes"])
-                    
-                    # for bb in res["result"]["bounding_boxes"]:
-                    #     img = cv2.rectangle(img, (bb['x'], bb['y']), (bb['x'] + bb['width'], bb['y'] + bb['height']), (255, 0, 0), 1)
-                    #     Label  = bb['label']
-                    #     score  = bb['value']
-                    #     print(Label, score)
-                    #     if score > 0.70 :
-                    #       if Label == "Drink":
-                    #          Tilo_Count+=1
-                    #       elif Label == "Biscuit":
-                    #          Oreo_Count+=1
-                    # db.child("count").update({"Tilo" : Tilo_Count,"Oreo":Oreo_Count,})
-                    # Tilo_Count,Oreo_Count = 0,0
 
                     for bb in res["result"]["bounding_boxes"]:
                         img = cv2.rectangle(img, (bb['x'], bb['y']), (bb['x'] + bb['width'], bb['y'] + bb['height']), (255, 0, 0), 1)
@@ -164,9 +151,9 @@ def main(argv):
                         score  = bb['value']
                         print(Label, score)
                         if score > 0.70 :
-                          if Label == "baby powder":
+                          if Label == "Powder":
                              BabyPowder_Count+=1
-                          elif Label == "box drink":
+                          elif Label == "Drink":
                              BoxDrink_Count+=1
                           elif Label == "canned good":
                              CannedGood_Count+=1
