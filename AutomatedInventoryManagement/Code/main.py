@@ -139,7 +139,7 @@ def main(argv):
 
             next_frame = 0 # limit to ~10 fps here
 
-            for res, img in runner.classifier(videoCaptureDeviceId):
+            for res, img in runner.classifier(videoCaptureDeviceId):               
 
                 if "bounding_boxes" in res["result"].keys():
                     print('Found %d bounding boxes (%d ms.)' % (len(res["result"]["bounding_boxes"]), res['timing']['dsp'] + res['timing']['classification']))
