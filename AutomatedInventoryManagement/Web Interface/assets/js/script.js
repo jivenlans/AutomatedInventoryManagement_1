@@ -19,9 +19,9 @@ countRef.on('value', function(snapshot) {
     val = snapshot.val()
     zeros = getObjKeys(val, 0)
     count = Object.keys(val)
-    let nonzeros = count.filter(x => !zeros.includes(x));
+    // let nonzeros = count.filter(x => !zeros.includes(x));
     
-    nonzeros.forEach(function (item, index) {
+    count.forEach(function (item, index) {
         value = '#' + item + '-count'
         console.log(value)
         $(value).css("color","black")
@@ -38,9 +38,23 @@ function sleep(ms) {
   }
 
 function popup_alert(value,item){
-    note = item + " stock is getting low"
+    
+    var newItemName = "";
+  
+    if (item == "BoxDrink")
+    {
+      newItemName = "Drink";
+    }
+    else if (item == "BabyPowder")
+    {
+      newItemName = "Powder";
+    }
+
+    note = newItemName + " stock is getting low"
     $(value).css("color","red")
-    $("#notification").text(note)
-    $("#box-notification").show()
-    sleep(3000).then(() => { $("#box-notification").fadeOut('slow'); });
+    // $("#notification").text(note)
+    // $("#box-notification").show()
+    // sleep(3000).then(() => { $("#box-notification").fadeOut('slow'); });
 }
+
+
